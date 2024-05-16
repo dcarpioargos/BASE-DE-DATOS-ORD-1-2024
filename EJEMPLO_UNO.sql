@@ -10,7 +10,7 @@ USE materia_db
 -- CREAR TABLAS
 
 CREATE TABLE alumnos (
-	Cedula INT PRIMARY KEY null,
+	Cedula INT PRIMARY KEY,
     nombres VARCHAR(75) not null,
     apellidos VARCHAR(75),
 	edad INT,
@@ -46,7 +46,7 @@ CREATE TABLE clase1(
 	CRITERIO BOOL
 )
  
- INSERT INTO clase1(MATERIA, PROMEDIO, CRITERIO)
+clase1 INSERT INTO clase1(MATERIA, PROMEDIO, CRITERIO)
 	VALUES ("Base de Datos", 100, true),
 			("Programacion", 90, false);
             
@@ -62,18 +62,10 @@ D = DELETE - ELIMINAR
 
 -- UPDATE SYNTAXIS
 UPDATE alumnos
-SET nombres = "CARLOS"
-WHERE cedula > 1
-
+SET edad = 40, apellidos = "APOLO 2"    -- 20 === "20"
+WHERE cedula = 909090901 OR nombres = "CARLOS";
 SELECT * FROM alumnos
 
-0	28	20:59:28	UPDATE alumnos
- SET nombres = "CARLOS"	Error Code: 1175. You are using safe update 
- mode and you tried to update a table without a WHERE that uses a 
- KEY column. 
- To disable safe mode, toggle the option in Preferences -> 
- SQL Editor and reconnect.	0.000 sec
- 
 
 
 
