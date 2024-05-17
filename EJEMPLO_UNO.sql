@@ -10,7 +10,8 @@ USE materia_db
 -- CREAR TABLAS
 
 CREATE TABLE alumnos (
-	Cedula INT PRIMARY KEY,
+	-- - Cedula INT PRIMARY KEY,
+    ID INT PRIMARY KEY AUTO_INCREMENT
     nombres VARCHAR(75) not null,
     apellidos VARCHAR(75),
 	edad INT,
@@ -19,9 +20,13 @@ CREATE TABLE alumnos (
 )
 
 INSERT INTO alumnos (cedula, nombres, apellidos, edad, isActive, fech_nac)
-	VALUES (0909090902, "ALEX", "CAICEDO2", 50, true, "2024/01/24"),
-		   (0909090903, "ISABEL", "CAICEDO2", 50, true, "2024/01/24"),
-	       (0909090904, "ISABEL", "CAICEDO2", 50, true, "2024/01/24");
+	VALUES (0909090905, "ALEX", "CAICEDO2", 50, true, "2024/01/24"),
+		   (0909090906, "ISABEL", "CAICEDO2", 50, true, "2024/01/24"),
+	       (0909090907, "ISABEL", "CAICEDO2", 50, true, "2024/01/24"),
+	       (0909090908, "ISABEL", "CAICEDO2", 50, true, "2024/01/24"),
+	       (0909090909, "ISABEL", "CAICEDO2", 50, true, "2024/01/24"),
+	       (0909090910, "ISABEL", "CAICEDO2", 50, true, "2024/01/24"),
+	       (0909090911, "ISABEL", "CAICEDO2", 50, true, "2024/01/24")
 
 SELECT * FROM alumnos
 
@@ -29,8 +34,12 @@ SELECT * FROM alumnos
          
   
 
-
-
+CREATE TABLE al (
+    ID INT PRIMARY KEY AUTO_INCREMENT,
+    nombres VARCHAR(75) null
+)
+INSERT INTO `materia_db`.`al` (`nombres`) VALUES ('juan');
+SELECT * FROM al
 
  
 union
@@ -66,9 +75,21 @@ SET edad = 40, apellidos = "APOLO 2"    -- 20 === "20"
 WHERE cedula = 909090901 OR nombres = "CARLOS";
 SELECT * FROM alumnos
 
+-- delete 
+SELECT * FROM alumnos where Cedula = 990909090
+DELETE FROM alumnos where Cedula = 990909090;
+SELECT * FROM alumnos
+
+update alumnos 
+set isActive = 0
+where Cedula >= 909090908  and edad = 20
+
+select * from alumnos
+where Cedula = 909090905  and  cedula = 909090906
 
 
 
+=CONCATENAR("INSERT INTO VALUE (VALOR) ";B2;D2;"a")
 
 
 
