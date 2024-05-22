@@ -89,9 +89,7 @@ where Cedula = 909090905  and  cedula = 909090906
 
 
 
-=CONCATENAR("INSERT INTO VALUE (VALOR) ";B2;D2;"a")
-
-
+-- -----
 
 
 
