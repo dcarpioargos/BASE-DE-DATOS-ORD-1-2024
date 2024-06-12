@@ -95,10 +95,15 @@ where Cedula = 909090905  and  cedula = 909090906
 
 
 SELECT * FROM mock_data
-WHERE (gender = "Male") AND (id >= 200) 
-AND (first_name = "Kenon") or university = "Universidad de San Andres";
-SELECT count(university) From mock_data 
-where university = "Universidad de San Andres";
+WHERE  (gender = "Male") AND (id >= 200) 
+AND (first_name = "Kenon") 
+OR university = "Universidad de San Andres";
+
+SELECT count(*) as cantidad, gender From mock_data 
+where first_name like "%edro%"
+group by gender
+
+-- where university = "Universidad de San Andres";
 
 
 
@@ -130,6 +135,8 @@ where first_name in (
 
 
 
+
+
 DELIMITER //
 CREATE procedure SP_ALUMNOS()
 BEGIN 
@@ -140,6 +147,46 @@ END //
 call materia_db.SP_ALUMNOS();
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+USE materia_db;
+-- PRIMERO Female
+SELECT * FROM mock_data
+WHERE gender = "Female" and job = "Electrical Engineer";
+-- SEGUNDO TEACHER
+SELECT * FROM mock_data
+WHERE job = "Professor" or job = "Teacher";
+-- TERCERO .gov
+SELECT * FROM mock_data
+WHERE email like "%.gov%" ;
+
+-- CUARTO nombres
+SELECT * FROM mock_data
+ORDER BY first_name asc;
+-- cinco id entre 100 y 150 y que sean Masculinos
+SELECT * FROM mock_data
+WHERE (id BETWEEN 100 and 150) and gender = "Male";
+-- seis cantidad de veces que se repite un nombre
+SELECT COUNT(*), first_name FROM mock_data
+GROUP BY first_name;
 
 
 
