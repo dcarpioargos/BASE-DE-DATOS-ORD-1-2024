@@ -194,7 +194,7 @@ GROUP BY first_name;
 
 
 
-
+==================== PARCIAL 2 ===========================
 
 
 Encuentra las categorías de libros, 
