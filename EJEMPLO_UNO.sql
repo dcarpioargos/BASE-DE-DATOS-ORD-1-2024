@@ -196,7 +196,7 @@ GROUP BY first_name;
 
 ==================== PARCIAL 2 ===========================
 
-
+========= EJERCICIO EN CLASES USANDO: COUNT, SUM, AVG, MAX, MIN, GROUP BY, HAVING, ORDERBY
 Encuentra las categorías de libros, 
 el número total de libros vendidos, 
 el precio promedio, 
@@ -273,14 +273,58 @@ INSERT INTO Ventas (id_libro, cantidad, fecha_venta) VALUES
 SELECT * FROM mock_data
 WHERE university LIKE "%Medical%" and last_name = "Lister"
 -- IN
-
 SELECT * FROM mock_data
 WHERE first_name IN ("Vaclav", "Ky", "Georgeanne") and id > 2
+ -- IN PARA NUMEROS
+SELECT * FROM mock_data
+WHERE id = 2 OR id = 3 OR id = 25
+
+SELECT * FROM mock_data
+WHERE id IN(2, 3, 25, 100000000)
+
+!FALSE  =  TRUE
+!TRUE   =  FALSE
+
+<> TRUE = FALSE
+<> FALSE = TRUE
+
+NOT FALSE = TRUE
+NOT TRUE = FALSE
+-- 
+SELECT * FROM mock_data
+WHERE id NOT IN(2, 3, 25)
+
+SELECT * FROM mock_data
+WHERE ip_address IS NOT NULL
+
+NULL
+0
+UNDEFINED
+""
 
 
+----- ORDER BY
+SELECT * FROM mock_data
+ORDER BY first_name, last_name ASC
 
 
+-- group by
+SELECT  first_name, gender FROM mock_data
+GROUP BY  gender, first_name
+-- count
+SELECT first_name, COUNT(first_name) AS cant FROM mock_data
+WHERE first_name = "Dirk"
+GROUP BY first_name;
+SELECT * FROM mock_data WHERE first_name = "Dirk"
 
+-- HAVING 
+SELECT last_name, count(*) FROM mock_data
+GROUP BY last_name
+HAVING count(*) >= 2
+-- SELECT last_name, count(*) as bel 
+-- FROM mock_data
+-- GROUP BY last_name
+-- HAVING bel >= 2
 
 
 
