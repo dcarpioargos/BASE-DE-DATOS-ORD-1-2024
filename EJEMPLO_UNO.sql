@@ -308,7 +308,7 @@ INSERT INTO Libros (titulo, autor, precio, fecha_publicacion, categoria) VALUES
 ('Alicia en el País de las Maravillas', 'Lewis Carroll', 15.00, '1865-11-26', 'Infantil');
 
 INSERT INTO Ventas (id_libro, cantidad, fecha_venta) VALUES
-(1, 10, '2022-01-15'),
+(1, '10', '2022-01-15'),
 (2, 5, '2022-01-20'),
 (3, 8, '2022-02-10'),
 (4, 12, '2022-02-15'),
@@ -335,21 +335,58 @@ SELECT * FROM ventas;
 -- valores unicos sin id repetidos
 SELECT * FROM libros AS l, ventas AS v
 WHERE l.id_libro = v.id_libro;
-
 -- resultado del ejercicio
 SELECT 
 	l.categoria, 
 	COUNT(l.id_libro) AS total_libros,
     SUM(v.cantidad) AS total_vendidos,
-    AVG(l.precio) AS precio_promedio
+    AVG(l.precio) AS precio_promedio,
+    MIN(l.precio) AS precio_minimo,
+    MAX(l.precio) AS precio_maximo
 FROM libros AS l, ventas AS v
-WHERE l.id_libro = v.id_libro
-GROUP BY l.categoria;
+WHERE l.id_libro = v.id_libro --  OR total_vendidos > 2
+GROUP BY l.categoria
+HAVING total_libros > 2
+ORDER BY total_vendidos DESC;
+-- Error Code: 1054. Unknown column 'total_vendidos' in 'where clause'	0.000 sec
+
+-- dividir el archivo
+SELECT * FROM libros
+
+Encuentra las categoría de libros, 
+SELECT l.categoria FROM libros AS l
+GROUP BY l.categoria
+
+el número total de libros vendidos SELECT * FROM ventas, 
+SELECT SUM(cantidad) AS totalvendidos
+FROM ventas 
+el precio promedio, 
+SELECT AVG(l.precio) AS promedio_libros FROM libros AS l
+
+el precio máximo y el precio mínimo por categoría. 
+SELECT categoria as cat,
+	MIN(libros.precio) as valor_min,
+    MAX(libros.precio) as valor_max
+FROM libros
+GROUP BY cat
+
+
+}SELECT MIN()
+
+Filtra para mostrar solo las categorías que han vendido más de 1 libros en total. 
+Ordena los resultados por la cantidad total vendida en orden descendente.
 
 
 
- 
+============ EJERCICIO 2 =====================
 
-
-
+- Analiza el rendimiento de ventas por autor. 
+Proporciona para cada autor que ha vendido al menos 10 libros en total, un informe que muestre lo siguiente:
+- El nombre del autor
+- El número total de libros diferentes que ha vendido
+- La cantidad total de libros vendidos
+- El ingreso total generado por sus ventas
+- El precio promedio de sus libros
+- El título de su libro más caro
+- Ordena los resultados por el ingreso total generado en orden descendente.
 
