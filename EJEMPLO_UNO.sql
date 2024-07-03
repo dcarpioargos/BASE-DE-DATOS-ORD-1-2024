@@ -390,3 +390,17 @@ Proporciona para cada autor que ha vendido al menos 10 libros en total, un infor
 - El título de su libro más caro
 - Ordena los resultados por el ingreso total generado en orden descendente.
 
+SELECT * FROM libros AS l, ventas AS v WHERE l.id_libro = v.id_libro;
+SELECT 
+     l.autor AS "Nombre del Autor",
+     COUNT(DISTINCT l.id_libro) AS "Numero de Libros Vendidos",
+     SUM(v.cantidad) AS cantidad_total_vendidad,
+     SUM(v.cantidad * l.precio) AS Ingreso_Total, 
+     AVG(l.precio) AS promedio_precio
+FROM libros AS l, ventas AS v
+WHERE l.id_libro = v.id_libro
+GROUP BY l.autor
+
+select * from libros
+
+     
