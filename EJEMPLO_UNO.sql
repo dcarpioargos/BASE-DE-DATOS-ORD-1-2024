@@ -412,9 +412,8 @@ select * from libros
 
 
 
-
+use taller_2
 SELECT * FROM taller_2.cars;
-
 
 DELIMITER //
 CREATE PROCEDURE lista_autos()
@@ -423,20 +422,29 @@ BEGIN
 END //
 DELIMITER ;
 
-CALL lista_autos()
+CALL lista_autos();
 
+DROP PROCEDURE IF EXISTS lista_autos_con_un_param;
 DELIMITER //
-CREATE PROCEDURE lista_autos_con_un_param(IN _model VARCHAR(50))
+CREATE PROCEDURE lista_autos_con_un_param( IN _model VARCHAR(50), IN _id INT )
 BEGIN
-	SELECT * FROM taller_2.cars where model = _model;
+	SELECT * FROM taller_2.cars where model = _model AND id = _id;
 END //
 DELIMITER ;
-
-CALL lista_autos_con_un_param("Corolla");
-CALL lista_autos_con_un_param("Civic");
-
+CALL lista_autos_con_un_param("Corolla", 1);
+CALL lista_autos_con_un_param("Corolla", 2);
 
 
+-- ================JOINS ====================
+SELECT * FROM materia_fdb.ventas;
+SELECT * FROM materia_fdb.libros;
+-- INNER JOIN
+SELECT 
+	*
+FROM ventas AS vta
+INNER JOIN libros AS lib ON vta.id_libro = lib.id_libro 
+RIGHT JOIN libros AS lib2 ON vta.id_libro = lib2.id_libro 
+LEFT JOIN libros AS lib3 ON vta.id_libro = lib3.id_libro 
 
 
 
