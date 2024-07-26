@@ -403,4 +403,44 @@ GROUP BY l.autor
 
 select * from libros
 
+
+
+
+
+
+
+
+
+
+
+SELECT * FROM taller_2.cars;
+
+
+DELIMITER //
+CREATE PROCEDURE lista_autos()
+BEGIN
+	SELECT * FROM taller_2.cars;
+END //
+DELIMITER ;
+
+CALL lista_autos()
+
+DELIMITER //
+CREATE PROCEDURE lista_autos_con_un_param(IN _model VARCHAR(50))
+BEGIN
+	SELECT * FROM taller_2.cars where model = _model;
+END //
+DELIMITER ;
+
+CALL lista_autos_con_un_param("Corolla");
+CALL lista_autos_con_un_param("Civic");
+
+
+
+
+
+
+
+
+
      
