@@ -404,15 +404,28 @@ GROUP BY l.autor
 select * from libros
 
 
+-- =============== SP - STORE PROCEDURE ===============
 
 
+CREATE TABLE cars (
+  id INT AUTO_INCREMENT,
+  brand VARCHAR(50),
+  model VARCHAR(50),
+  year INT,
+  color VARCHAR(20),
+  features TEXT,
+  PRIMARY KEY (id)
+);
+
+INSERT INTO cars (brand, model, year, color, features)
+VALUES
+  ('Toyota', 'Corolla', 2015, 'Silver', 'ABS, Airbags'),
+  ('Toyota', 'Corolla', 2016, 'Black', 'ABS, Airbags, Cruise Control'),
+  ('Honda', 'Civic', 2017, 'Red', 'ABS, Airbags, Bluetooth'),
+  ('Honda', 'Civic', 2018, 'White', 'ABS, Airbags, Bluetooth, Navigation'),
+  ('Ford', 'Focus', 2019, 'Blue', 'ABS, Airbags, Bluetooth, Navigation, Heated Seats');
 
 
-
-
-
-
-use taller_2
 SELECT * FROM taller_2.cars;
 
 DELIMITER //
