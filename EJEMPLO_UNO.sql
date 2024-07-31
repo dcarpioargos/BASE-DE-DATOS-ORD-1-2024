@@ -460,8 +460,37 @@ RIGHT JOIN libros AS lib2 ON vta.id_libro = lib2.id_libro
 LEFT JOIN libros AS lib3 ON vta.id_libro = lib3.id_libro 
 
 
+-- CONSULTA CON JOIN Y FUNCIONES DE AGREGACIÓN
 
 
+SELECT 
+     l.autor AS "Nombre del Autor",
+     COUNT(DISTINCT l.id_libro) AS "Numero de Libros Vendidos",
+     SUM(v.cantidad) AS cantidad_total_vendidad,
+     SUM(v.cantidad * l.precio) AS Ingreso_Total, 
+     AVG(l.precio) AS promedio_precio
+FROM libros AS l 
+INNER JOIN ventas v ON l.id_libro = v.id_libro
+GROUP BY l.autor
 
 
-     
+-- CONSULTA CON JOIN, PROCEDIMIENTOS ALMACENADOS, Y FUNCIONES DE AGREGACIÓN
+-- ES SIMILAR AL PROYECTO
+DROP PROCEDURE IF EXISTS lista_autos_con_un_param;
+DELIMITER //
+CREATE PROCEDURE lista_autos_con_un_param( IN _nombre_autor VARCHAR(50) )
+BEGIN
+	SELECT 
+     l.autor AS "Nombre del Autor",
+     COUNT(DISTINCT l.id_libro) AS "Numero de Libros Vendidos",
+     SUM(v.cantidad) AS cantidad_total_vendidad,
+     SUM(v.cantidad * l.precio) AS Ingreso_Total, 
+     AVG(l.precio) AS promedio_precio
+FROM libros AS l 
+INNER JOIN ventas v ON l.id_libro = v.id_libro
+WHERE l.autor = _nombre_autor 
+GROUP BY l.autor;
+END //
+DELIMITER ;
+CALL lista_autos_con_un_param("Bram Stoker");
+CALL lista_autos_con_un_param("Dante Alighieri");
